@@ -1,6 +1,7 @@
 import os
 import sys
 import subprocess
+import ctypes
 
 from .config import xfce_displays
 
@@ -17,6 +18,9 @@ def set_background(file_path):
         subprocess.call(["gsettings", "set", "org.gnome.desktop.background", "primary-color", "FFFFFF"])
     elif de == "mate":
         subprocess.call(["gsettings", "set", "org.mate.background", "picture-filename", file_path])
+    elif de = "windows":
+        SPI_SETDESKWALLPAPER = 20 
+        ctypes.windll.user32.SystemParametersInfoA(SPI_SETDESKWALLPAPER, 0, file_path, 3)
     elif de == "xfce4":
         for display in xfce_displays:
             subprocess.call(["xfconf-query", "--channel", "xfce4-desktop", "--property", display, "--set", file_path])
