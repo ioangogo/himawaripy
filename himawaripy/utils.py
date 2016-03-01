@@ -18,7 +18,7 @@ def set_background(file_path):
         subprocess.call(["gsettings", "set", "org.gnome.desktop.background", "primary-color", "FFFFFF"])
     elif de == "mate":
         subprocess.call(["gsettings", "set", "org.mate.background", "picture-filename", file_path])
-    elif de = "windows":
+    elif de == "windows":
         SPI_SETDESKWALLPAPER = 20 
         ctypes.windll.user32.SystemParametersInfoA(SPI_SETDESKWALLPAPER, 0, file_path, 3)
     elif de == "xfce4":
